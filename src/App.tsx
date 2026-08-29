@@ -41,7 +41,7 @@ export default function App() {
       <div className="absolute inset-0 z-10 flex flex-col items-center justify-center pointer-events-none">
         
         {/* Title / Typography */}
-        <div className="absolute top-16 left-0 right-0 overflow-hidden h-24 flex items-center justify-center">
+        <div className="absolute top-10 md:top-12 left-0 right-0 overflow-hidden h-24 flex items-center justify-center">
           <AnimatePresence mode="popLayout" custom={direction}>
             <motion.h1
               key={currentIndex}
@@ -50,7 +50,7 @@ export default function App() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: direction > 0 ? -50 : 50 }}
               transition={{ duration: 0.5, type: "spring", bounce: 0.2 }}
-              className="text-white text-5xl md:text-6xl font-bold tracking-tight drop-shadow-md text-center px-4"
+              className="text-white text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight drop-shadow-md text-center px-4"
             >
               {flavor.name}
             </motion.h1>
@@ -58,18 +58,18 @@ export default function App() {
         </div>
 
         {/* Interaction Area */}
-        <div className="flex items-center justify-center w-full max-w-4xl px-4 pointer-events-auto">
+        <div className="relative flex items-center justify-center w-full max-w-4xl px-4 pointer-events-auto mt-24 md:mt-16">
           {/* Arrow Left */}
           <button 
             onClick={() => paginate(-1)}
-            className="flex p-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white transition-colors z-20 absolute left-4 md:left-8 lg:left-24"
+            className="flex p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white transition-colors z-20 absolute top-1/2 -translate-y-1/2 left-4 md:left-8 lg:left-24"
             aria-label="Previous Flavor"
           >
-            <ChevronLeft size={36} />
+            <ChevronLeft size={36} className="w-8 h-8 md:w-9 md:h-9" />
           </button>
 
           {/* Center Cup */}
-          <div className="relative mt-20 z-10 flex items-center justify-center">
+          <div className="relative z-10 flex items-center justify-center">
             <AnimatePresence mode="popLayout" custom={direction}>
               <motion.div
                 key={currentIndex}
@@ -87,22 +87,22 @@ export default function App() {
           {/* Arrow Right */}
           <button 
             onClick={() => paginate(1)}
-            className="flex p-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white transition-colors z-20 absolute right-4 md:right-8 lg:right-24"
+            className="flex p-3 md:p-4 rounded-full bg-white/10 hover:bg-white/20 backdrop-blur-sm text-white transition-colors z-20 absolute top-1/2 -translate-y-1/2 right-4 md:right-8 lg:right-24"
             aria-label="Next Flavor"
           >
-            <ChevronRight size={36} />
+            <ChevronRight size={36} className="w-8 h-8 md:w-9 md:h-9" />
           </button>
         </div>
 
         {/* Interaction Hint (Mobile & Desktop) */}
-        <div className="absolute bottom-8 md:bottom-12 text-white/70 font-medium tracking-wide flex flex-col md:flex-row gap-2 items-center text-sm md:text-base pointer-events-none text-center">
+        <div className="absolute bottom-4 md:bottom-8 text-white/70 font-medium tracking-wide flex flex-col md:flex-row gap-1 md:gap-2 items-center text-xs md:text-sm lg:text-base pointer-events-none text-center">
           <div className="hidden md:block">Drag straw to stir</div>
           <span className="hidden md:inline opacity-50">|</span>
           <div>Tap cup to drink</div>
         </div>
         
         {/* Pagination Dots */}
-        <div className="absolute bottom-20 flex gap-3 pointer-events-auto">
+        <div className="absolute bottom-14 md:bottom-16 flex gap-3 pointer-events-auto">
           {FLAVORS.map((_, idx) => (
             <button
               key={idx}
