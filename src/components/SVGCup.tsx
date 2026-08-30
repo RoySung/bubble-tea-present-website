@@ -71,7 +71,7 @@ export default function SVGCup({ liquidColor }: SVGCupProps) {
 
   return (
     <motion.div 
-      className="w-[280px] sm:w-[350px] md:w-[400px] h-auto origin-bottom cursor-pointer"
+      className="w-[280px] sm:w-[340px] md:w-[370px] lg:w-[390px] h-auto origin-bottom cursor-pointer"
       style={{
         rotateX,
         rotateY,
@@ -99,7 +99,7 @@ export default function SVGCup({ liquidColor }: SVGCupProps) {
         </defs>
 
         {/* Cup Shadow on the surface */}
-        <ellipse cx="200" cy="510" rx="140" ry="18" fill="#B38B00" opacity="0.4" />
+        <ellipse cx="200" cy="510" rx="140" ry="18" fill="rgba(0,0,0,0.2)" />
 
         {/* Back of the cup (inner wall) */}
         <path
