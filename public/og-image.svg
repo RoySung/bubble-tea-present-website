@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Classic Milk Tea</title>
+  <desc id="desc">A cup of classic milk tea with boba on a blue and yellow background.</desc>
+  <rect width="1200" height="472" fill="#1952D6"/>
+  <rect y="472" width="1200" height="158" fill="#FFD900"/>
+  <text x="600" y="91" fill="#FFFFFF" font-family="Arial, Helvetica, sans-serif" font-size="58" font-weight="800" letter-spacing="-3" text-anchor="middle">Classic Milk Tea</text>
+  <g transform="translate(382 121) scale(.92)">
+    <ellipse cx="237" cy="510" rx="145" ry="18" fill="#B59900" fill-opacity=".55"/>
+    <path d="M142 200H332L312 480a25 25 0 0 1-25 20H187a25 25 0 0 1-25-20Z" fill="#FFFFFF" fill-opacity=".2"/>
+    <path d="M145 260H329L312 480a25 25 0 0 1-25 20H187a25 25 0 0 1-25-20Z" fill="#E8C996"/>
+    <polygon points="292,20 322,20 257,490 227,490" fill="#FFFFFF" fill-opacity=".72"/>
+    <polygon points="292,20 299,20 234,490 227,490" fill="#FFFFFF" fill-opacity=".92"/>
+    <g fill="#302B29">
+      <circle cx="187" cy="390" r="15"/><circle cx="229" cy="398" r="15"/><circle cx="272" cy="390" r="15"/>
+      <circle cx="207" cy="430" r="15"/><circle cx="249" cy="435" r="15"/><circle cx="287" cy="430" r="15"/>
+      <circle cx="232" cy="470" r="15"/>
+    </g>
+    <path d="M127 190H347L322 480a30 30 0 0 1-30 30H182a30 30 0 0 1-30-30Z" fill="#FFFFFF" fill-opacity=".13" stroke="#FFFFFF" stroke-opacity=".72" stroke-width="4"/>
+    <path d="M117 180H357L352 190H122Z" fill="#FFFFFF" fill-opacity=".86"/>
+    <rect x="112" y="175" width="250" height="6" rx="3" fill="#FFFFFF"/>
+    <polygon points="145,210 157,210 182,430 170,430" fill="#FFFFFF" fill-opacity=".5"/>
+  </g>
+</svg>

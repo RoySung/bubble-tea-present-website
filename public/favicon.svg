@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512" viewBox="0 0 160 160" role="img" aria-labelledby="title">
+  <title id="title">Interactive Boba</title>
+  <rect width="160" height="160" rx="32" fill="#1952D6"/>
+  <ellipse cx="80" cy="137" rx="46" ry="6" fill="#123FA9" fill-opacity=".45"/>
+  <path d="M91 20H105L86 109H72Z" fill="#FFFFFF"/>
+  <path d="M91 20H95L77 109H72Z" fill="#DCE7FF"/>
+  <path d="M42 56H118L110 125A12 12 0 0 1 98 135H62A12 12 0 0 1 50 125Z" fill="#FFFFFF" fill-opacity=".18" stroke="#FFFFFF" stroke-width="3"/>
+  <path d="M47 85H113L108 125A10 10 0 0 1 98 133H62A10 10 0 0 1 52 125Z" fill="#E8C996"/>
+  <g fill="#302B29"><circle cx="65" cy="109" r="8"/><circle cx="82" cy="105" r="8"/><circle cx="99" cy="110" r="8"/><circle cx="73" cy="122" r="8"/><circle cx="91" cy="123" r="8"/></g>
+  <path d="M38 52H122L119 58H41Z" fill="#FFFFFF"/>
+  <path d="M52 62H56L64 109H60Z" fill="#FFFFFF" fill-opacity=".48"/>
+</svg>
