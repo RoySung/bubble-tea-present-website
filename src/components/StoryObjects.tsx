@@ -2,21 +2,122 @@ export function Shaker() {
   return (
     <div className="story-object shaker" data-shaker aria-hidden="true">
       <svg viewBox="0 0 320 460" role="presentation">
-        <ellipse cx="160" cy="430" rx="98" ry="13" fill="rgba(21,22,24,.18)" />
+        <defs>
+          <linearGradient id="shaker-body-metal" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#666b6e" />
+            <stop offset="0.12" stopColor="#b9bdbe" />
+            <stop offset="0.27" stopColor="#f6f7f7" />
+            <stop offset="0.42" stopColor="#b4b8ba" />
+            <stop offset="0.61" stopColor="#e7e8e8" />
+            <stop offset="0.8" stopColor="#a0a5a7" />
+            <stop offset="1" stopColor="#5b6063" />
+          </linearGradient>
+          <linearGradient id="shaker-dome-metal" x1="0.08" y1="0.05" x2="0.9" y2="0.95">
+            <stop offset="0" stopColor="#fafafa" />
+            <stop offset="0.28" stopColor="#c8cbcc" />
+            <stop offset="0.52" stopColor="#8d9294" />
+            <stop offset="0.73" stopColor="#dedfdf" />
+            <stop offset="1" stopColor="#656a6d" />
+          </linearGradient>
+          <linearGradient id="shaker-cap-metal" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#707578" />
+            <stop offset="0.2" stopColor="#d9dbdc" />
+            <stop offset="0.38" stopColor="#fbfbfb" />
+            <stop offset="0.58" stopColor="#a8adaf" />
+            <stop offset="0.82" stopColor="#e1e2e2" />
+            <stop offset="1" stopColor="#62676a" />
+          </linearGradient>
+          <linearGradient id="shaker-ring-metal" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stopColor="#858a8c" />
+            <stop offset="0.18" stopColor="#f4f5f5" />
+            <stop offset="0.46" stopColor="#a4a9ab" />
+            <stop offset="0.7" stopColor="#f7f7f7" />
+            <stop offset="1" stopColor="#777c7f" />
+          </linearGradient>
+        </defs>
+
+        <ellipse cx="160" cy="432" rx="92" ry="13" fill="rgba(21,22,24,.22)" />
+
         <path
-          d="M62 102h196l-20 286c-2 26-19 42-44 42h-68c-25 0-42-16-44-42z"
-          fill="#ead7c7"
-          stroke="#fff"
-          strokeWidth="5"
+          d="M69 153h182l-18 235c-2 27-18 42-42 42h-62c-24 0-40-15-42-42z"
+          fill="url(#shaker-body-metal)"
+          stroke="#f2f3f3"
+          strokeWidth="4"
         />
-        <path d="M64 106h34l18 281c2 24 13 36 31 43h-21c-25 0-42-16-44-42z" fill="#d8bea8" />
-        <path d="M229 111h17l-19 274c-2 20-13 32-31 39l12-29z" fill="rgba(255,255,255,.34)" />
-        <ellipse data-shaker-mouth cx="160" cy="88" rx="108" ry="18" fill="#9b7459" stroke="#fff" strokeWidth="5" />
-        <path d="M51 87h218l-8 22H59z" fill="rgba(255,255,255,.82)" />
-        <rect x="43" y="78" width="234" height="12" rx="6" fill="#fff" />
-        <path d="M89 124h13l18 218h-12z" fill="rgba(255,255,255,.38)" />
-        <rect x="105" y="245" width="110" height="48" rx="24" fill="#704128" />
-        <text x="160" y="277" fill="#fff" fontSize="24" fontWeight="900" textAnchor="middle" letterSpacing="2">SHAKE</text>
+        <path
+          d="M68 143c9-53 46-86 92-86s83 33 92 86z"
+          fill="url(#shaker-dome-metal)"
+          stroke="#f2f3f3"
+          strokeWidth="4"
+        />
+        <path
+          d="M116 31c1-12 10-19 23-20h42c13 1 22 8 23 20l5 60h-98z"
+          fill="url(#shaker-cap-metal)"
+          stroke="#f2f3f3"
+          strokeWidth="4"
+        />
+
+        <path d="M112 76h96l1 15h-98z" fill="rgba(72,77,80,.24)" />
+        <path d="M114 78h93" fill="none" stroke="#f8f8f8" strokeWidth="2.5" opacity="0.72" />
+        <path d="M115 83h93" fill="none" stroke="#6c7174" strokeWidth="2" opacity="0.6" />
+
+        <rect
+          x="58"
+          y="138"
+          width="204"
+          height="27"
+          rx="13.5"
+          fill="url(#shaker-ring-metal)"
+          stroke="#f4f5f5"
+          strokeWidth="4"
+        />
+        <path d="M65 157h190" fill="none" stroke="#62676a" strokeWidth="2" opacity="0.38" />
+
+        <path
+          d="M92 177l13 207c1 18 8 28 21 36"
+          fill="none"
+          stroke="#fff"
+          strokeWidth="12"
+          strokeLinecap="round"
+          opacity="0.25"
+        />
+        <path
+          d="M225 178l-13 205c-1 17-7 27-18 35"
+          fill="none"
+          stroke="#353a3d"
+          strokeWidth="8"
+          strokeLinecap="round"
+          opacity="0.16"
+        />
+        <path d="M101 214h123" fill="none" stroke="#fff" strokeWidth="1" opacity="0.13" />
+        <path d="M97 331h126" fill="none" stroke="#4d5255" strokeWidth="1" opacity="0.12" />
+
+        <text
+          x="159"
+          y="291"
+          fill="#f5f6f6"
+          fontSize="25"
+          fontWeight="900"
+          textAnchor="middle"
+          letterSpacing="2.4"
+          opacity="0.44"
+        >
+          SHAKE
+        </text>
+        <text
+          x="160"
+          y="292"
+          fill="#8c9193"
+          fontSize="25"
+          fontWeight="900"
+          textAnchor="middle"
+          letterSpacing="2.4"
+          opacity="0.68"
+        >
+          SHAKE
+        </text>
+
+        <ellipse data-shaker-mouth cx="160" cy="13" rx="47" ry="8" fill="transparent" />
       </svg>
     </div>
   );
