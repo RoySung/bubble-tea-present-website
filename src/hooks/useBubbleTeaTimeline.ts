@@ -139,7 +139,14 @@ export function useBubbleTeaTimeline({
           rotation: isMobile ? -22 : 7,
           transformOrigin: '50% 0%',
         });
-        gsap.set(cupShell, { autoAlpha: 0, x: cupEntryX, y: 180, scale: 0.84 });
+        gsap.set(cupShell, {
+          autoAlpha: 0,
+          xPercent: -50,
+          yPercent: -50,
+          x: cupEntryX,
+          y: 180,
+          scale: 0.84,
+        });
         gsap.set(cupLiquidClip, { attr: { y: 500 } });
         gsap.set(cupLid, { autoAlpha: 0, y: -18 });
         gsap.set(cupStraw, { autoAlpha: 0, y: -210 });
