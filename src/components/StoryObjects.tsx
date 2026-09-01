@@ -1,42 +1,22 @@
-const shakerPearls = [
-  [112, 318], [148, 324], [184, 316], [128, 350], [166, 352], [202, 346],
-  [104, 380], [145, 384], [188, 380], [218, 374],
-];
-
 export function Shaker() {
   return (
     <div className="story-object shaker" data-shaker aria-hidden="true">
       <svg viewBox="0 0 320 460" role="presentation">
-        <defs>
-          <clipPath id="shaker-liquid-clip">
-            <path d="M62 102h196l-20 286c-2 26-19 42-44 42h-68c-25 0-42-16-44-42z" />
-          </clipPath>
-        </defs>
         <ellipse cx="160" cy="430" rx="98" ry="13" fill="rgba(21,22,24,.18)" />
         <path
           d="M62 102h196l-20 286c-2 26-19 42-44 42h-68c-25 0-42-16-44-42z"
-          fill="rgba(255,255,255,.16)"
-          stroke="rgba(255,255,255,.76)"
+          fill="#ead7c7"
+          stroke="#fff"
           strokeWidth="5"
         />
-        <g clipPath="url(#shaker-liquid-clip)">
-          <rect
-            data-shaker-liquid
-            x="55"
-            y="142"
-            width="210"
-            height="292"
-            fill="#704128"
-          />
-          <g data-shaker-pearls>
-            {shakerPearls.map(([cx, cy], index) => (
-              <circle key={index} cx={cx} cy={cy} r="13" fill="#25211e" />
-            ))}
-          </g>
-        </g>
+        <path d="M64 106h34l18 281c2 24 13 36 31 43h-21c-25 0-42-16-44-42z" fill="#d8bea8" />
+        <path d="M229 111h17l-19 274c-2 20-13 32-31 39l12-29z" fill="rgba(255,255,255,.34)" />
+        <ellipse data-shaker-mouth cx="160" cy="88" rx="108" ry="18" fill="#9b7459" stroke="#fff" strokeWidth="5" />
         <path d="M51 87h218l-8 22H59z" fill="rgba(255,255,255,.82)" />
         <rect x="43" y="78" width="234" height="12" rx="6" fill="#fff" />
-        <path d="M83 122h14l22 220h-13z" fill="rgba(255,255,255,.42)" />
+        <path d="M89 124h13l18 218h-12z" fill="rgba(255,255,255,.38)" />
+        <rect x="105" y="245" width="110" height="48" rx="24" fill="#704128" />
+        <text x="160" y="277" fill="#fff" fontSize="24" fontWeight="900" textAnchor="middle" letterSpacing="2">SHAKE</text>
       </svg>
     </div>
   );

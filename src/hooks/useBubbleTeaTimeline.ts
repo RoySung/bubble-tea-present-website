@@ -39,11 +39,13 @@ export function useBubbleTeaTimeline({
       {
         isDesktop: '(min-width: 768px)',
         isMobile: '(max-width: 767px)',
+        isLandscape: '(max-height: 640px) and (orientation: landscape)',
         reduceMotion: '(prefers-reduced-motion: reduce)',
       },
       (context) => {
-        const { isMobile, reduceMotion } = context.conditions as {
+        const { isMobile, isLandscape, reduceMotion } = context.conditions as {
           isMobile: boolean;
+          isLandscape: boolean;
           reduceMotion: boolean;
         };
 
@@ -63,8 +65,6 @@ export function useBubbleTeaTimeline({
         const finalBackground = query<HTMLElement>('[data-final-background]');
         const finalUi = query<HTMLElement>('[data-final-ui]');
         const shaker = query<HTMLElement>('[data-shaker]');
-        const shakerLiquid = query<SVGRectElement>('[data-shaker-liquid]');
-        const shakerPearls = query<SVGGElement>('[data-shaker-pearls]');
         const teaVessel = query<HTMLElement>('[data-tea-vessel]');
         const teaStream = query<HTMLElement>('[data-tea-stream]');
         const milkVessel = query<HTMLElement>('[data-milk-vessel]');
@@ -82,8 +82,8 @@ export function useBubbleTeaTimeline({
         const stepLabels = queryAll<HTMLElement>('[data-step-label]');
 
         const requiredTargets = [
-          storyBg, bgTop, bgBottom, finalBackground, finalUi, shaker, shakerLiquid,
-          shakerPearls, teaVessel, teaStream, milkVessel, milkStream, servingStream,
+          storyBg, bgTop, bgBottom, finalBackground, finalUi, shaker,
+          teaVessel, teaStream, milkVessel, milkStream, servingStream,
           cupShell, cupLiquidClip, cupLid, cupStraw, cupPearls, sealFilm,
           progressRail, progressFill, scrollCue,
         ];
@@ -94,7 +94,8 @@ export function useBubbleTeaTimeline({
           return;
         }
 
-        const pourX = isMobile ? 92 : 210;
+        const pourX = isLandscape ? 88 : isMobile ? 105 : 128;
+        const pourY = isLandscape ? -78 : isMobile ? -128 : -155;
         const cupEntryX = isMobile ? -82 : -190;
         const shakeX = isMobile ? 58 : 105;
         let finalIsActive = false;
@@ -112,14 +113,32 @@ export function useBubbleTeaTimeline({
         gsap.set(finalUi, { autoAlpha: 0, y: 28 });
         gsap.set(stepLabels, { autoAlpha: 0, y: 32 });
         gsap.set(stepLabels[0], { autoAlpha: 1, y: 0 });
-        gsap.set(shaker, { autoAlpha: 0, yPercent: 120, scale: 0.84, rotation: 0 });
-        gsap.set(shakerLiquid, { scaleY: 0, transformOrigin: '50% 100%', fill: '#704128' });
-        gsap.set(shakerPearls, { y: 0, rotation: 0, transformOrigin: '50% 100%' });
-        gsap.set(teaVessel, { autoAlpha: 0, x: isMobile ? -90 : -180, y: -30, rotation: -12 });
-        gsap.set(teaStream, { autoAlpha: 0, scaleY: 0, transformOrigin: '50% 0%' });
-        gsap.set(milkVessel, { autoAlpha: 0, x: isMobile ? 90 : 180, y: -25, rotation: 12 });
-        gsap.set(milkStream, { autoAlpha: 0, scaleY: 0, transformOrigin: '50% 0%' });
-        gsap.set(servingStream, { autoAlpha: 0, scaleY: 0, transformOrigin: '50% 0%' });
+        gsap.set(shaker, { autoAlpha: 0, yPercent: 70, scale: 0.84, rotation: 0 });
+        gsap.set(teaVessel, {
+          autoAlpha: 0,
+          xPercent: -2.5,
+          x: isMobile ? 90 : 180,
+          y: -24,
+          rotation: -5,
+          transformOrigin: '2.5% 42%',
+        });
+        gsap.set(teaStream, { autoAlpha: 0, xPercent: -50, scaleY: 0, transformOrigin: '50% 0%' });
+        gsap.set(milkVessel, {
+          autoAlpha: 0,
+          xPercent: -96,
+          x: isMobile ? -90 : -180,
+          y: -22,
+          rotation: 5,
+          transformOrigin: '96% 24%',
+        });
+        gsap.set(milkStream, { autoAlpha: 0, xPercent: -50, scaleY: 0, transformOrigin: '50% 0%' });
+        gsap.set(servingStream, {
+          autoAlpha: 0,
+          xPercent: -50,
+          scaleY: 0,
+          rotation: isMobile ? -22 : 7,
+          transformOrigin: '50% 0%',
+        });
         gsap.set(cupShell, { autoAlpha: 0, x: cupEntryX, y: 180, scale: 0.84 });
         gsap.set(cupLiquidClip, { attr: { y: 500 } });
         gsap.set(cupLid, { autoAlpha: 0, y: -18 });
@@ -163,40 +182,35 @@ export function useBubbleTeaTimeline({
           .to(bgBottom, { yPercent: 0, duration: 5.5 }, 0)
           .to(scrollCue, { autoAlpha: 0, y: 18, duration: 1.5 }, 7.5)
 
-          .to(shaker, { autoAlpha: 1, yPercent: 0, scale: 1, duration: 3 }, 10)
-          .to(teaVessel, { autoAlpha: 1, x: 0, y: 0, rotation: -6, duration: 2.5 }, 10.5)
+          .to(shaker, { autoAlpha: 1, yPercent: -50, scale: 1, duration: 3 }, 10)
+          .to(teaVessel, { autoAlpha: 1, x: 0, y: 0, rotation: -5, duration: 2.5 }, 10.5)
           .to(teaStream, { autoAlpha: 1, scaleY: 1, duration: 1.3 }, 12)
-          .to(shakerLiquid, { scaleY: 0.46, duration: 7 }, 13)
+          .to(teaVessel, { rotation: -12, duration: 7 }, 13)
           .to(teaStream, { scaleY: 0, autoAlpha: 0, duration: 1.2 }, 20)
-          .to(teaVessel, { autoAlpha: 0, x: isMobile ? -70 : -140, y: -40, duration: 1.5 }, 20)
+          .to(teaVessel, { autoAlpha: 0, x: isMobile ? 72 : 145, y: -40, duration: 1.5 }, 20)
 
           .to(bgTop, { backgroundColor: '#d6587b', duration: 3.5 }, 22)
           .to(bgBottom, { backgroundColor: '#82a15e', duration: 3.5 }, 22)
-          .to(milkVessel, { autoAlpha: 1, x: 0, y: 0, rotation: 6, duration: 2.5 }, 22.3)
+          .to(milkVessel, { autoAlpha: 1, x: 0, y: 0, rotation: 5, duration: 2.5 }, 22.3)
           .to(milkStream, { autoAlpha: 1, scaleY: 1, duration: 1.3 }, 24)
-          .to(shakerLiquid, { scaleY: 0.74, fill: '#e6c69a', duration: 7 }, 25)
+          .to(milkVessel, { rotation: 12, duration: 7 }, 25)
           .to(milkStream, { scaleY: 0, autoAlpha: 0, duration: 1.2 }, 32)
-          .to(milkVessel, { autoAlpha: 0, x: isMobile ? 72 : 145, y: -42, duration: 1.5 }, 32)
+          .to(milkVessel, { autoAlpha: 0, x: isMobile ? -72 : -145, y: -42, duration: 1.5 }, 32)
 
           .to(bgTop, { backgroundColor: '#704128', xPercent: -3, duration: 2 }, 34)
           .to(bgBottom, { backgroundColor: '#f0dab1', xPercent: 4, duration: 2 }, 34)
           .to(shaker, { x: -shakeX, rotation: -12, duration: 2.2 }, 34)
-          .to(shakerPearls, { x: 18, rotation: 4, duration: 2.2 }, 34)
           .to(shaker, { x: shakeX, rotation: 13, duration: 2.2 }, 36.2)
-          .to(shakerPearls, { x: -22, rotation: -5, duration: 2.2 }, 36.5)
           .to(shaker, { x: -shakeX * 0.88, rotation: -10, duration: 2.2 }, 38.4)
-          .to(shakerPearls, { x: 20, rotation: 4, duration: 2.2 }, 38.8)
           .to(shaker, { x: shakeX * 0.78, rotation: 9, duration: 2.2 }, 40.6)
-          .to(shakerPearls, { x: -17, rotation: -4, duration: 2.2 }, 41)
           .to(shaker, { x: 0, rotation: 0, duration: 3.8 }, 42.8)
-          .to(shakerPearls, { x: 0, rotation: 0, duration: 3.4 }, 43.4)
           .to(bgTop, { xPercent: 0, duration: 3 }, 45)
           .to(bgBottom, { xPercent: 0, duration: 3 }, 45)
 
           .to(bgTop, { backgroundColor: '#d84339', duration: 3 }, 49)
           .to(bgBottom, { backgroundColor: '#f0dab1', duration: 3 }, 49)
           .to(cupShell, { autoAlpha: 1, x: 0, y: 0, scale: 1, duration: 4 }, 49)
-          .to(shaker, { x: pourX, y: isMobile ? -128 : -155, rotation: 55, duration: 3.5 }, 49)
+          .to(shaker, { x: pourX, y: pourY, rotation: -55, duration: 3.5 }, 49)
           .to(servingStream, { autoAlpha: 1, scaleY: 1, duration: 1.3 }, 52)
           .to(cupLiquidClip, { attr: { y: 260 }, duration: 8.5 }, 52.5)
           .to(servingStream, { scaleY: 0, autoAlpha: 0, duration: 1.2 }, 60.5)

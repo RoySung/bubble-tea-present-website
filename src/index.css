@@ -132,12 +132,12 @@ button:focus-visible,
 
 .tea-vessel {
   top: 4%;
-  left: max(3vw, calc(50% - 330px));
+  left: 50%;
 }
 
 .milk-vessel {
   top: 3%;
-  right: max(3vw, calc(50% - 330px));
+  left: 50%;
   width: clamp(132px, 18vw, 210px);
 }
 
@@ -148,24 +148,23 @@ button:focus-visible,
 }
 
 .tea-stream {
-  top: 23%;
-  left: calc(50% - clamp(80px, 10vw, 135px));
-  height: 35%;
+  top: 13%;
+  left: 50%;
+  height: 24%;
   background: #704128;
 }
 
 .milk-stream {
-  top: 23%;
-  left: calc(50% + clamp(66px, 9vw, 118px));
-  height: 34%;
+  top: 9%;
+  left: 50%;
+  height: 28%;
   background: #f4e6d7;
 }
 
 .serving-stream {
-  top: 21%;
-  left: calc(50% + clamp(28px, 4vw, 58px));
-  height: 36%;
-  rotate: 13deg;
+  top: 25%;
+  left: 50%;
+  height: 20%;
   background: #e6c69a;
   box-shadow: inset 3px 0 0 rgba(255, 255, 255, 0.25);
 }
@@ -267,6 +266,19 @@ button:focus-visible,
   justify-content: flex-start;
   padding: clamp(24px, 6vh, 58px) 24px 0;
   text-align: center;
+}
+
+.story-label-tea,
+.story-label-pour {
+  align-items: flex-start;
+  padding-left: clamp(28px, 6vw, 92px);
+  text-align: left;
+}
+
+.story-label-milk {
+  align-items: flex-end;
+  padding-right: clamp(28px, 6vw, 92px);
+  text-align: right;
 }
 
 .story-label p {
@@ -681,6 +693,28 @@ button:focus-visible,
     font-size: clamp(2.55rem, 13vw, 4.2rem);
   }
 
+  .story-label-tea,
+  .story-label-pour {
+    padding-left: 20px;
+  }
+
+  .story-label-milk {
+    padding-right: 20px;
+  }
+
+  .story-label-tea h2,
+  .story-label-milk h2,
+  .story-label-pour h2 {
+    max-width: 55vw;
+    font-size: clamp(2.2rem, 11vw, 3.4rem);
+  }
+
+  .story-label-tea span,
+  .story-label-milk span,
+  .story-label-pour span {
+    max-width: 22ch;
+  }
+
   .story-label span {
     max-width: 29ch;
     font-size: 0.82rem;
@@ -702,32 +736,32 @@ button:focus-visible,
 
   .tea-vessel {
     top: 10%;
-    left: -20px;
+    left: 50%;
     width: 145px;
   }
 
   .milk-vessel {
     top: 9%;
-    right: -12px;
+    left: 50%;
     width: 135px;
   }
 
   .tea-stream {
-    top: 27%;
-    left: 34%;
-    height: 31%;
+    top: 15%;
+    left: 50%;
+    height: 30%;
   }
 
   .milk-stream {
-    top: 26%;
-    left: 65%;
-    height: 31%;
+    top: 13%;
+    left: 50%;
+    height: 32%;
   }
 
   .serving-stream {
-    top: 25%;
-    left: 57%;
-    height: 32%;
+    top: 34%;
+    left: 50%;
+    height: 14%;
   }
 
   .seal-film {
@@ -829,6 +863,21 @@ button:focus-visible,
 
   .shaker {
     width: min(28vw, 220px);
+  }
+
+  .tea-stream {
+    top: 16%;
+    height: 16%;
+  }
+
+  .milk-stream {
+    top: 12%;
+    height: 20%;
+  }
+
+  .serving-stream {
+    top: 25%;
+    height: 7%;
   }
 
   .flavor-title-window {
