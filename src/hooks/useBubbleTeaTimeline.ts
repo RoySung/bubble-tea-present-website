@@ -37,6 +37,7 @@ export function useBubbleTeaTimeline({
 
     media.add(
       {
+        isDesktop: '(min-width: 768px)',
         isMobile: '(max-width: 767px)',
         reduceMotion: '(prefers-reduced-motion: reduce)',
       },
@@ -217,7 +218,7 @@ export function useBubbleTeaTimeline({
 
           .to(finalBackground, { autoAlpha: 1, duration: 4 }, 84)
           .to(storyBg, { autoAlpha: 0, duration: 4 }, 84)
-          .to(cupShell, { yPercent: 5, scale: isMobile ? 0.92 : 0.96, duration: 5 }, 84)
+          .to(cupShell, { yPercent: -45, scale: isMobile ? 0.92 : 0.96, duration: 5 }, 84)
           .to(finalUi, { autoAlpha: 1, y: 0, duration: 5 }, 88)
           .to(progressRail, { autoAlpha: 0, duration: 2 }, 90);
 

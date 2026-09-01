@@ -795,6 +795,10 @@ button:focus-visible,
 }
 
 @media (max-height: 640px) and (orientation: landscape) {
+  .story-stage {
+    min-height: 100svh;
+  }
+
   .story-label {
     align-items: flex-start;
     padding: 22px 0 0 28px;
@@ -810,10 +814,13 @@ button:focus-visible,
     display: none;
   }
 
-  .shaker,
+  .shaker {
+    top: 57%;
+  }
+
   .story-cup-shell,
   .fallback-cup-shell {
-    top: 57%;
+    top: 50%;
   }
 
   .cup-art {
