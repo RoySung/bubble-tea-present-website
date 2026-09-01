@@ -93,11 +93,21 @@ When progress crosses into or out of the final activation range, a guarded callb
 
 Register GSAP and ScrollTrigger once. Use `useGSAP()` with a root scope so timelines and ScrollTriggers revert on unmount. Use `gsap.matchMedia()` for desktop, mobile, and reduced-motion branches. Do not nest `gsap.context()` inside matchMedia.
 
+## Final Activation Boundary
+
+The `serve` beat begins at 84% timeline progress. From 84–94%, the cup settles, the classic flavor title replaces the process label, and the carousel controls enter. At 94%, the experience crosses one explicit interaction threshold: the carousel and cup controls become focusable and receive pointer input. From 94–100%, the composition holds its completed layout so visitors can interact without further scene displacement.
+
+Scrolling back below 94% immediately returns the final controls to `inert`, removes them from the tab order, disables Motion-driven cup input, and resumes GSAP ownership of the story. The threshold callback must be guarded so React state changes once per crossing rather than on every ScrollTrigger update.
+
 ## Responsive Behavior
 
 Desktop and modern mobile share the same eight beats, object continuity, and fully reversible progress. Responsive variants adjust movement vectors, object scale, title position, and safe-area spacing rather than deleting scenes.
 
 Use viewport-relative motion distances with clamped limits so tools stay on screen. Use `svh` or `dvh` for the pinned stage on mobile. Recalculate functional values after orientation or layout changes through ScrollTrigger's normal refresh cycle. Call `ScrollTrigger.refresh()` only after real layout changes such as font or asset loading; never on every scroll frame.
+
+Remove the current page-level `touch-none` behavior. The story stage must preserve native vertical panning with `touch-action: pan-y`. Before the 94% activation boundary, the cup and straw cannot claim pointer gestures. After activation, horizontal straw dragging may use a gesture-specific inner target, but vertical movement over the cup must still scroll the page so visitors can reverse the story.
+
+Run pointer parallax only after final activation and only on devices with a fine, hover-capable pointer. Touch devices receive the same scroll choreography without a dormant global mousemove listener.
 
 ## Accessibility and Static Fallback
 
@@ -156,6 +166,19 @@ Do not use an `aria-live` region to announce scroll progress. The process copy r
 - Profile the shake and sealing-film beats, which carry the highest simultaneous motion.
 - Check for layout thrashing, long tasks, oversized composited layers, and unnecessary paints.
 - Target visually smooth 60 fps on current desktop and modern mobile hardware without making correctness depend on that target.
+
+## Acceptance Criteria
+
+- The page presents exactly eight ordered beats: Bubble Tea, pure tea into shaker, milk added, shake, pour into the serving cup, seal, insert straw, and finished drink on the table.
+- One native vertical scroll drives one reversible master GSAP timeline with `pin: true`, `scrub: true`, no snapping, and no autoplay.
+- Every beat transition is carried primarily by spatial movement, object continuity, liquid progress, or the sealing-film wipe rather than a repeated fade-and-rise reveal.
+- The finished drink at the `serve` beat is the existing three-flavor carousel, not a duplicate or separate page.
+- Existing flavor switching, straw drag, pointer parallax, pearl stirring, and sip interactions work after 94% progress and cannot receive focus or pointer input before that boundary.
+- GSAP and Motion never animate transforms on the same DOM node.
+- Desktop and modern mobile contain the same eight beats; mobile vertical scrolling remains available even when a gesture begins over the cup.
+- Reduced-motion and GSAP-failure paths expose all eight steps and a usable final carousel without the pinned parallax sequence.
+- Optional image-model assets remain decorative, local, and removable without losing meaning or breaking the core SVG composition.
+- TypeScript checking and the production Vite build succeed, and browser verification covers forward and reverse scrolling, deep reload, resize, orientation, keyboard access, reduced motion, current iOS Safari, and Android Chrome.
 
 ## Implementation Sequence
 
