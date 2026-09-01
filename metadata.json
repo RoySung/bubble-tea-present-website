@@ -1,6 +1,6 @@
 {
-  "name": "Interactive Boba",
-  "description": "An interactive bubble tea carousel with sliding effects and fluid transitions.",
+  "name": "Bubble Tea — Scroll to Make",
+  "description": "Scroll through every pour, shake, seal, and sip in an interactive bubble tea story.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }
