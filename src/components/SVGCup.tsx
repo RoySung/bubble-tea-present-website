@@ -153,15 +153,13 @@ export default function SVGCup({ interactive = false, liquidColor }: SVGCupProps
         <g data-cup-straw-shell>
           <motion.g style={{ x: strawX, y: strawY }}>
             <motion.g
-              drag={interactive ? 'x' : false}
+              drag="x"
               dragConstraints={{ left: -80, right: 30 }}
               dragElastic={0.1}
               dragMomentum={false}
-              onPointerDown={(event) => {
-                if (interactive) event.stopPropagation();
-              }}
-              style={{ x: strawDragX, cursor: interactive ? 'grab' : 'default', touchAction: 'pan-y' }}
-              whileDrag={interactive ? { cursor: 'grabbing' } : undefined}
+              onPointerDown={(event) => event.stopPropagation()}
+              style={{ x: strawDragX, cursor: 'grab', touchAction: 'pan-y' }}
+              whileDrag={{ cursor: 'grabbing' }}
             >
               <motion.g
                 style={{ transformOrigin: '240px 180px' }}
