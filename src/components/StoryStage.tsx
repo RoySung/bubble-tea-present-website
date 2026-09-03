@@ -2,7 +2,14 @@ import type { Flavor } from '../flavors';
 import { STORY_BEATS } from '../storyBeats';
 import FlavorCarousel from './FlavorCarousel';
 import FlavorCup from './FlavorCup';
-import { MilkPour, SealFilm, ServingPourStream, Shaker, TeaPour } from './StoryObjects';
+import {
+  MilkPour,
+  SealFilm,
+  ServingPourStream,
+  Shaker,
+  ShakerBack,
+  TeaPour,
+} from './StoryObjects';
 
 interface StoryStageProps {
   active: boolean;
@@ -45,6 +52,7 @@ export default function StoryStage({
       </div>
 
       <div className="story-world" aria-hidden="true">
+        <ShakerBack />
         <TeaPour />
         <MilkPour />
         <Shaker />

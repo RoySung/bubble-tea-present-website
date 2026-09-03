@@ -107,9 +107,14 @@ button:focus-visible,
   position: absolute;
   top: 54%;
   left: 50%;
+  z-index: 2;
   width: clamp(190px, 27vw, 300px);
   translate: -50% -50%;
   transform-origin: 50% 55%;
+}
+
+.shaker-back {
+  z-index: 0;
 }
 
 .shaker svg,
@@ -123,6 +128,7 @@ button:focus-visible,
 .ingredient-layer {
   position: absolute;
   inset: 0;
+  z-index: 1;
 }
 
 .ingredient-vessel {
@@ -150,14 +156,14 @@ button:focus-visible,
 .tea-stream {
   top: 13%;
   left: 50%;
-  height: 24%;
+  height: 0;
   background: #704128;
 }
 
 .milk-stream {
   top: 9%;
   left: 50%;
-  height: 28%;
+  height: 0;
   background: #f4e6d7;
 }
 
@@ -165,7 +171,9 @@ button:focus-visible,
   top: 25%;
   left: 50%;
   height: 20%;
+  z-index: 1;
   background: #e6c69a;
+  border-radius: 999px 999px 0 0;
   box-shadow: inset 3px 0 0 rgba(255, 255, 255, 0.25);
 }
 
@@ -756,13 +764,11 @@ button:focus-visible,
   .tea-stream {
     top: 15%;
     left: 50%;
-    height: 30%;
   }
 
   .milk-stream {
     top: 13%;
     left: 50%;
-    height: 32%;
   }
 
   .serving-stream {
@@ -874,12 +880,10 @@ button:focus-visible,
 
   .tea-stream {
     top: 16%;
-    height: 16%;
   }
 
   .milk-stream {
     top: 12%;
-    height: 20%;
   }
 
   .serving-stream {
