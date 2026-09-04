@@ -14,9 +14,9 @@ import {
 interface StoryStageProps {
   active: boolean;
   currentIndex: number;
-  direction: number;
   flavor: Flavor;
   hidden: boolean;
+  transitioning: boolean;
   onPaginate: (direction: number) => void;
   onSelect: (index: number) => void;
 }
@@ -24,9 +24,9 @@ interface StoryStageProps {
 export default function StoryStage({
   active,
   currentIndex,
-  direction,
   flavor,
   hidden,
+  transitioning,
   onPaginate,
   onSelect,
 }: StoryStageProps) {
@@ -40,8 +40,8 @@ export default function StoryStage({
       <FlavorCarousel
         active={active}
         currentIndex={currentIndex}
-        direction={direction}
         flavor={flavor}
+        transitioning={transitioning}
         onPaginate={onPaginate}
         onSelect={onSelect}
       />
@@ -64,8 +64,8 @@ export default function StoryStage({
         <FlavorCup
           active={active}
           currentIndex={currentIndex}
-          direction={direction}
           liquidColor={flavor.liquidColor}
+          transitioning={transitioning}
         />
       </div>
 

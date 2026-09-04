@@ -5,15 +5,15 @@ import SVGCup from './SVGCup';
 interface FlavorCupProps {
   active: boolean;
   currentIndex: number;
-  direction: number;
   liquidColor: string;
+  transitioning: boolean;
 }
 
 export default function FlavorCup({
   active,
   currentIndex,
-  direction,
   liquidColor,
+  transitioning,
 }: FlavorCupProps) {
   const controls = useAnimationControls();
   const reducedMotion = useReducedMotion();
@@ -25,17 +25,32 @@ export default function FlavorCup({
 
     if (!active || !changed || reducedMotion) return;
 
-    controls.set({ opacity: 0, x: direction > 0 ? 120 : -120 });
+    controls.set({ y: 0, scaleX: 1, scaleY: 1 });
     void controls.start({
-      opacity: 1,
-      x: 0,
-      transition: { duration: 0.48, ease: [0.22, 1, 0.36, 1] },
+      y: [0, 9, 6, 0],
+      scaleX: [1, 1.006, 1.003, 1],
+      scaleY: [1, 0.984, 0.99, 1],
+      transition: {
+        duration: 1.76,
+        times: [0, 0.16, 0.63, 1],
+        ease: [0.22, 1, 0.36, 1],
+      },
     });
-  }, [active, controls, currentIndex, direction, reducedMotion]);
+  }, [active, controls, currentIndex, reducedMotion]);
 
   return (
-    <motion.div className="cup-flavor-motion" initial={false} animate={controls}>
-      <SVGCup liquidColor={liquidColor} interactive={active} />
+    <motion.div
+      className="cup-flavor-motion"
+      initial={false}
+      animate={controls}
+      style={{ transformOrigin: '50% 100%' }}
+    >
+      <SVGCup
+        currentIndex={currentIndex}
+        liquidColor={liquidColor}
+        interactive={active}
+        interactionDisabled={transitioning}
+      />
     </motion.div>
   );
 }

@@ -418,6 +418,24 @@ button:focus-visible,
   z-index: 0;
 }
 
+.final-bg-layer {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  will-change: transform;
+}
+
+.final-bg-wave {
+  position: absolute;
+  top: clamp(-66px, -7vh, -42px);
+  left: -7.5%;
+  width: 115%;
+  height: clamp(78px, 12vh, 112px);
+  border-radius: 48% 54% 0 0 / 70% 76% 0 0;
+  transform-origin: 50% 100%;
+}
+
 .final-ui {
   position: absolute;
   inset: 0;
@@ -475,6 +493,15 @@ button:focus-visible,
 
 .flavor-arrow:hover {
   background: rgba(29, 26, 24, 0.76);
+}
+
+.flavor-arrow:disabled,
+.flavor-dot:disabled {
+  cursor: wait;
+}
+
+.flavor-arrow:disabled {
+  opacity: 0.72;
 }
 
 .flavor-arrow:active {

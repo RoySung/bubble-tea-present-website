@@ -6,8 +6,8 @@ import type { Flavor } from '../flavors';
 interface StoryFallbackProps {
   active: boolean;
   currentIndex: number;
-  direction: number;
   flavor: Flavor;
+  transitioning: boolean;
   onPaginate: (direction: number) => void;
   onSelect: (index: number) => void;
 }
@@ -15,8 +15,8 @@ interface StoryFallbackProps {
 export default function StoryFallback({
   active,
   currentIndex,
-  direction,
   flavor,
+  transitioning,
   onPaginate,
   onSelect,
 }: StoryFallbackProps) {
@@ -44,8 +44,8 @@ export default function StoryFallback({
           <FlavorCarousel
             active={active}
             currentIndex={currentIndex}
-            direction={direction}
             flavor={flavor}
+            transitioning={transitioning}
             onPaginate={onPaginate}
             onSelect={onSelect}
           />
@@ -53,8 +53,8 @@ export default function StoryFallback({
             <FlavorCup
               active={active}
               currentIndex={currentIndex}
-              direction={direction}
               liquidColor={flavor.liquidColor}
+              transitioning={transitioning}
             />
           </div>
         </li>
