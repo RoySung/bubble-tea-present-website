@@ -114,21 +114,23 @@ export default function FlavorCarousel({
         </button>
 
         <div className="flavor-controls">
-          <div className="flavor-dots" aria-label="Choose a flavor">
-            {FLAVORS.map((item, index) => (
-              <button
-                type="button"
-                key={item.id}
-                onClick={() => onSelect(index)}
-                className={`flavor-dot ${index === currentIndex ? 'is-current' : ''}`}
-                aria-label={`Show ${item.name}`}
-                aria-current={index === currentIndex ? 'true' : undefined}
-                disabled={transitioning}
-                tabIndex={active ? 0 : -1}
-              >
-                <span />
-              </button>
-            ))}
+          <div className="flavor-pagination">
+            <div className="flavor-dots" aria-label="Choose a flavor">
+              {FLAVORS.map((item, index) => (
+                <button
+                  type="button"
+                  key={item.id}
+                  onClick={() => onSelect(index)}
+                  className={`flavor-dot ${index === currentIndex ? 'is-current' : ''}`}
+                  aria-label={`Show ${item.name}`}
+                  aria-current={index === currentIndex ? 'true' : undefined}
+                  disabled={transitioning}
+                  tabIndex={active ? 0 : -1}
+                >
+                  <span />
+                </button>
+              ))}
+            </div>
           </div>
           <p className="interaction-hint">
             <span className="desktop-hint">Drag straw to stir</span>
